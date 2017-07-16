@@ -9,6 +9,8 @@ import java.util.Random;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
+import org.omg.Messaging.SyncScopeHelper;
+
 public class Frogger extends JPanel implements KeyListener {
 	Font font = new Font(Font.SANS_SERIF, Font.BOLD, 20);
 	Graphics g;
@@ -25,10 +27,15 @@ public class Frogger extends JPanel implements KeyListener {
 
 	public Frogger() {
 		setup();
-
-		for (int p = 0; p < 15; p++) {
-			Car newCar = new Car(0, 50 * p);
+		for (int p = 0; p < 25; p++) {
+			Car newCar = new Car(0, 35 * p);
+			newCar.setCarSpeed();
+			newCar.setDitection();
 			Cars.add(newCar);
+			if(newCar.getDirection()==-1) {
+				newCar.setCarX(750);
+			}
+			
 		}
 
 	}
@@ -53,20 +60,36 @@ public class Frogger extends JPanel implements KeyListener {
 				G.setColor(Color.BLACK);
 				G.fillRect(Cars.get(x).getCarX(), Cars.get(x).getCarY(), 50, 30);
 			}
-			if (counter % 1000 == 0) {
+			if (counter % 100 == 0) {
 				for (int v = 0; v < Cars.size(); v++) {
-					Cars.get(v).setCarX(Cars.get(v).getCarX() + 50);
+					if(Cars.get(v).getDirection()==1) {
+						Cars.get(v).setCarX(Cars.get(v).getCarX() + Cars.get(v).getCarSpeed()+4);
+					}
+					if(Cars.get(v).getDirection()==-1) {
+						Cars.get(v).setCarX(Cars.get(v).getCarX() - (Cars.get(v).getCarSpeed()+4));
+					}
+					
+					if(Cars.get(v).getCarX()>=800 && Cars.get(v).getDirection()==1) {
+						Cars.get(v).setCarX(0);
+					}
+					if(Cars.get(v).getCarX()<=-50 && Cars.get(v).getDirection()==-1) {
+						Cars.get(v).setCarX(750);
+					}
 				}
 			}
 			repaint();
 		}
+		if(gameState==2) {
+			
+		}
 	}
-
 	void setup() {
 		p.setVisible(true);
 		p.add(this);
 		p.setSize(800, 1000);
 		p.addKeyListener(this);
+		p.setResizable(false);
+		p.setTitle("Frogger");
 	}
 
 	@Override
