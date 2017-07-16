@@ -139,16 +139,6 @@ public class Frogger extends JPanel implements KeyListener {
 
 	@Override
 	public void keyTyped(KeyEvent e) {
-
-	}
-
-	@Override
-	public void keyPressed(KeyEvent e) {
-
-	}
-
-	@Override
-	public void keyReleased(KeyEvent e) {
 		if (gameState == 0) {
 			if (e.getKeyCode() == 32) {
 				gameState = 1;
@@ -182,5 +172,15 @@ public class Frogger extends JPanel implements KeyListener {
 				repaint();
 			}
 		}
+	}
+
+	@Override
+	public void keyPressed(KeyEvent e) {
+		
+	}
+
+	@Override
+	public void keyReleased(KeyEvent e) {
+		
 	}
 }
