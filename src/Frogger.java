@@ -95,10 +95,10 @@ public class Frogger extends JPanel implements KeyListener {
 			if (counter % 100 == 0) {
 				for (int v = 0; v < Cars.size(); v++) {
 					if(Cars.get(v).getDirection()==1) {
-						Cars.get(v).setCarX(Cars.get(v).getCarX() + Cars.get(v).getCarSpeed()+4);
+						Cars.get(v).setCarX(Cars.get(v).getCarX() + Cars.get(v).getCarSpeed());
 					}
 					if(Cars.get(v).getDirection()==-1) {
-						Cars.get(v).setCarX(Cars.get(v).getCarX() - (Cars.get(v).getCarSpeed()+4));
+						Cars.get(v).setCarX(Cars.get(v).getCarX() - (Cars.get(v).getCarSpeed()));
 					}
 					
 					if(Cars.get(v).getCarX()>=800 && Cars.get(v).getDirection()==1) {

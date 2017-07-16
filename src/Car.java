@@ -24,7 +24,7 @@ public class Car {
 		
 	}
 	public void setCarSpeed() {
-		CarSpeed = r.nextInt(8);
+		CarSpeed = r.nextInt(16);
 	}
 
 	public Car(int CarX, int CarY) {
