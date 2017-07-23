@@ -3,11 +3,11 @@ import java.util.Random;
 public class Car {
 	Random r=new Random();
 	int CarY;
-	int CarX;
-	int CarSpeed;
+	double CarX;
+	double CarSpeed;
 	int direction;
 
-	public int getCarSpeed() {
+	public double getCarSpeed() {
 		return CarSpeed;
 	}
 	public void setDitection() {
@@ -24,20 +24,20 @@ public class Car {
 		
 	}
 	public void setCarSpeed() {
-		CarSpeed = r.nextInt(16);
+		CarSpeed = r.nextInt(30);
 	}
 
 	public Car(int CarX, int CarY) {
 		this.CarY = CarY;
 		this.CarX = CarX;
-		this.CarSpeed=CarSpeed;
+		//this.CarSpeed=CarSpeed;
 	}
 
 	public void setCarY(int CarY) {
 		this.CarY = CarY;
 	}
 
-	public void setCarX(int CarX) {
+	public void setCarX(double CarX) {
 		this.CarX = CarX;
 	}
 
@@ -45,7 +45,7 @@ public class Car {
 		return CarY;
 	}
 
-	public int getCarX() {
+	public double getCarX() {
 		return CarX;
 	}
 }
